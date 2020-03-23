@@ -10,7 +10,6 @@ def calcPath(path):
     sum=0
     for i in range(1,len(path)):
         sum+=int(param[path[i-1]][path[i]])
-        print(sum)
     return sum
 
 
@@ -24,7 +23,8 @@ def readNet(fileName):
 
 
 def loadNetwork():
-    return readNet("test2.txt")
+    #return readNet("test2.txt")
+    return readNet("test1.txt")
     #return readNet("easy_01_tsp.txt")
 
 
