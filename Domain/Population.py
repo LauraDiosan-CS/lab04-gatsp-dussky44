@@ -68,7 +68,7 @@ class Population:
 
     def raresGeneration(self):
         newPop= [self.bestChromosome()]
-        sorted(self.population,reverse=True)
+        sorted(self.population, reverse=True)
         for i in range(1,5):
             off=self.__population[0].crossover(self.__population[i])
             newPop.append(off)

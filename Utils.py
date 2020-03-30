@@ -1,9 +1,7 @@
 
 import warnings
+from math import sqrt
 
-import numpy as np
-import networkx as nx
-import matplotlib.pyplot as plt
 
 def calcPath(path):
     param=loadNetwork()
@@ -12,6 +10,20 @@ def calcPath(path):
         sum+=int(param[path[i-1]][path[i]])
     return sum
 
+
+def readDistNet(fileName):
+    coord=[]
+    with open(fileName) as f:
+        number=int(f.readline())
+        for n in range(number):
+            coord.append(f.readline().strip().split(" "))
+    cities=[]
+    for n in range(number):
+        line=[]
+        for i in range(number):
+            line.append(calcDistance(coord[n],coord[i]))
+        cities.append(line)
+    return cities
 
 def readNet(fileName):
     cities = []
@@ -24,8 +36,10 @@ def readNet(fileName):
 
 def loadNetwork():
     #return readNet("test2.txt")
-    return readNet("test1.txt")
+    #return readNet("test1.txt")
+    #return readNet("nodes.txt")
     #return readNet("easy_01_tsp.txt")
+    return readDistNet("berlin.txt")
 
 
 #Set the default params from here
@@ -40,3 +54,6 @@ def getParam(popSize):
     Param["popSize"]=popSize
     probParam['function']=calcPath
     return probParam,Param
+
+def calcDistance(p1,p2):
+    return sqrt((float(p1[1])-float(p2[1]))**2+(float(p1[2])-float(p2[2]))**2)
