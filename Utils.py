@@ -39,7 +39,8 @@ def loadNetwork():
     #return readNet("test1.txt")
     #return readNet("nodes.txt")
     #return readNet("easy_01_tsp.txt")
-    return readDistNet("berlin.txt")
+    #return readDistNet("berlin.txt")
+    return readDistNet("hardE.txt")
 
 
 #Set the default params from here
