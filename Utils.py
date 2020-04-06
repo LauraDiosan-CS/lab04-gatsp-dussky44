@@ -1,5 +1,3 @@
-
-import warnings
 from math import sqrt
 
 
@@ -31,16 +29,20 @@ def readNet(fileName):
         number = int(f.readline())
         for n in range(number):
             cities.append(f.readline().strip().split(","))
-    return cities
+    ints=[]
+    for city in cities:
+        ints.append(list(map(lambda x:int(x),city)))
+
+    return ints
 
 
 def loadNetwork():
     #return readNet("test2.txt")
     #return readNet("test1.txt")
     #return readNet("nodes.txt")
-    #return readNet("easy_01_tsp.txt")
+    return readNet("easy_01_tsp.txt")
     #return readDistNet("berlin.txt")
-    return readDistNet("hardE.txt")
+    #return readDistNet("hardE.txt")
 
 
 #Set the default params from here
@@ -50,7 +52,7 @@ def getParam(popSize):
     net=loadNetwork()
     noNodes=len(net)
     probParam["min"]=0
-    probParam["max"]=noNodes
+    probParam["max"]=noNodes-1
     probParam["noNode"]=noNodes
     Param["popSize"]=popSize
     probParam['function']=calcPath
